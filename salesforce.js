@@ -3,14 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-/*
-const conn = new jsforce.Connection({
-  instanceUrl: process.env.SALESFORCE_INSTANCE_URL,
-  serverUrl: process.env.SALESFORCE_SERVER_URL,
-  sessionId: process.env.SALESFORCE_SESSION_ID
-});
-*/
-
 const conn = new jsforce.Connection({
   // you can change loginUrl to connect to sandbox or prerelease env.
   loginUrl: process.env.SALESFORCE_INSTANCE_URL

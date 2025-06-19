@@ -64,7 +64,7 @@ const agent = async (openai, userInput, ws) => {
         chalk.yellow(`${functionName} =`) +
         chalk.green(`${JSON.stringify(functionArgs)}`);
       console.log(log);
-      ws.send(JSON.stringify({ type: "log", message: `[${i + 1}] = ${functionName} = ${JSON.stringify(functionArgs)}` }));
+      ws.send(`[${i + 1}] = ${functionName} = ${JSON.stringify(functionArgs)}`);
 
       messages.push({
         role: "function",

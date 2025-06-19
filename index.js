@@ -11,6 +11,6 @@ wss.on('connection', function connection(ws) {
   ws.on('message', async function message(data) {
     console.log('received: %s', data);
     const response = await agent(openai, data.toString(), ws);
-    ws.send(JSON.stringify({ type: 'response', message: response }));
+    ws.send(response);
   });
 });
