@@ -1,0 +1,21 @@
+{
+  "name": "reviq-agent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@openai/agents": "^0.0.8",
+    "chalk": "^5.4.1",
+    "dotenv": "^16.5.0",
+    "jsforce": "^3.9.1",
+    "openai": "^5.5.1",
+    "ws": "^8.18.2",
+    "zod": "^3.25.67"
+  },
+  "type": "module"
+}
