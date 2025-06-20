@@ -84,22 +84,6 @@ const soslQueryTool = tool({
   }
 });
 
-const mandatoryFields = z.object({
-  Id: z.string()
-});
-
-const stringRegex = /([^\s]+)/;
-const optionalStringFields = z.record(
-  z.string().regex(stringRegex),
-  z.string()
-);
-
-const numberRegex = /([^\s]+)/;
-const optionalNumberFields = z.record(
-  z.string().regex(numberRegex),
-  z.number()
-);
-
 /**
  * Update Salesforce Record Tool
  * This tool updates a specific Salesforce record.
