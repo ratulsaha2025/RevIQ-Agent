@@ -1,7 +1,7 @@
 import { WebSocketServer } from 'ws';
 import { run } from '@openai/agents';
 import dotenv from 'dotenv';
-import { salesforceAgent } from './agent.js';
+import { salesforceAgent } from './agents/salesforce_agent.js';
 
 dotenv.config();
 

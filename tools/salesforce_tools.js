@@ -81,7 +81,7 @@ const soslQueryTool = tool({
   },
   errorFunction: (_, error) => {
     return `Error executing SOSL query: ${error.message}`;
-  }
+  },
 });
 
 /**
