@@ -11,8 +11,7 @@ const listAllSObjectsTool = tool({
   name: 'list_all_sobjects',
   description: 'List all Salesforce objects',
   parameters: z.object({}),
-  execute: async (_, context) => {
-    context;
+  execute: async (_, _) => {
     console.log(chalk.yellow('Listing all Salesforce objects...'));
     const response = await listAllSObjects();
     return JSON.stringify(response, null, 2);
@@ -29,8 +28,7 @@ const describeSObjectTool = tool({
     objectName: z.string(),
   }),
   strict: true,
-  execute: async (params, context) => {
-    context;
+  execute: async (params, _) => {
     console.log(chalk.yellow(`Describing Salesforce object: `), chalk.green(params.objectName));
     const response = await describeSObject(params.objectName);
     return JSON.stringify(response, null, 2);
@@ -47,8 +45,7 @@ const soqlQueryTool = tool({
     query: z.string(),
   }),
   strict: true,
-  execute: async (params, context) => {
-    context;
+  execute: async (params, _) => {
     console.log(chalk.yellow(`Executing SOQL query: `), chalk.green(JSON.stringify(params.query)));
     const response = await soqlQuery(params.query);
     return JSON.stringify(response, null, 2);
