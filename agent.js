@@ -11,7 +11,7 @@ const listAllSObjectsTool = tool({
   name: 'list_all_sobjects',
   description: 'List all Salesforce objects',
   parameters: z.object({}),
-  execute: async (_, _) => {
+  execute: async () => {
     console.log(chalk.yellow('Listing all Salesforce objects...'));
     const response = await listAllSObjects();
     return JSON.stringify(response, null, 2);
