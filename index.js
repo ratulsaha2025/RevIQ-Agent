@@ -1,15 +1,15 @@
-import { WebSocketServer } from 'ws';
+import { WebSocketServer } from 'websocket';
 import { run } from '@openai/agents';
 import dotenv from 'dotenv';
 import { queryAgent } from './agent.js';
 
 dotenv.config();
 
-const wss = new WebSocketServer({ port: process.env.WEBSOCKET_PORT });
+const websocketServer = new WebSocketServer({ port: process.env.WEBSOCKET_PORT });
 
-wss.on('connection', function connection(ws) {
-  ws.on('message', async function message(data) {
+websocketServer.on('connection', (websocket) => {
+  websocket.on('message', async (data) => {
     const response = await run(queryAgent, thread.concat({ role: 'user', content: data.toString() }));
-    ws.send(response);
+    websocket.send(response);
   });
 });

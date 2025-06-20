@@ -1,4 +1,4 @@
-import { Agent, tool, OpenAIChatCompletionsModel } from '@openai/agents';
+import { Agent, tool } from '@openai/agents';
 import { z } from 'zod';
 import dotenv from 'dotenv';
 import chalk from 'chalk';
