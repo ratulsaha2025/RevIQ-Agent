@@ -1,9 +1,9 @@
 name: Deploy
 on:
   push:
-    branches: main
+    branches: agentapi_impl
   pull_request:
-    branches: main
+    branches: agentapi_impl
 
 jobs:
   deploy:
@@ -34,7 +34,7 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "coolirisme-openai-agen-39"
+          project: "reviq-openai-agent"
           entrypoint: "index.js"
           root: ""
           
