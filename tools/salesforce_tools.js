@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { tool } from '@openai/agents';
 import { z } from 'zod';
-import { listAllSObjects, describeSObject, soqlQuery, soslQuery, updateRecord } from '../salesforce.js';
+import { listAllSObjects, describeSObject, soqlQuery, soslQuery, updateRecord } from '../integrations/salesforce.js';
 
 /**
  * List All Salesforce Objects Tool
