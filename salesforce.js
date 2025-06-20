@@ -4,10 +4,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const conn = new jsforce.Connection({
-  // you can change loginUrl to connect to sandbox or prerelease env.
   loginUrl: process.env.SALESFORCE_INSTANCE_URL
 });
-await conn.login(process.env.SALESFORCE_USERNAME, process.env.SALESFORCE_PASSWORD_TOKEN)
+await conn.login(process.env.SALESFORCE_USERNAME, process.env.SALESFORCE_PASSWORD_TOKEN);
 
 const listAllSObjects = async () => {
   const metadata = await conn.describeGlobal();
@@ -35,8 +34,22 @@ const soqlQuery = async (query) => {
   return await conn.query(query);
 }
 
+const soslQuery = async (query) => {
+  const res = await conn.search(query);
+  return res.searchRecords;
+}
+
+const updateRecord = async (objectName, recordId, updatedFields) => {
+  return await conn.sobject(objectName).update({
+    Id: recordId,
+    ...updatedFields
+  });
+}
+
 export {
   listAllSObjects,
   describeSObject,
-  soqlQuery
+  soqlQuery,
+  soslQuery,
+  updateRecord
 }
