@@ -1,16 +1,15 @@
 import { WebSocketServer } from 'ws';
+import { run } from '@openai/agents';
 import dotenv from 'dotenv';
-dotenv.config();
+import { queryAgent } from './agent.js';
 
-import { agent, createOpenAIInstance } from './salesforce_agent.js';
+dotenv.config();
 
 const wss = new WebSocketServer({ port: process.env.WEBSOCKET_PORT });
 
 wss.on('connection', function connection(ws) {
-  const openai = createOpenAIInstance();
   ws.on('message', async function message(data) {
-    console.log('received: %s', data);
-    const response = await agent(openai, data.toString(), ws);
+    const response = await run(queryAgent, thread.concat({ role: 'user', content: data.toString() }));
     ws.send(response);
   });
 });

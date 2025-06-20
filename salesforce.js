@@ -1,4 +1,4 @@
-import jsforce from "jsforce";
+import jsforce from 'jsforce';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -11,7 +11,7 @@ await conn.login(process.env.SALESFORCE_USERNAME, process.env.SALESFORCE_PASSWOR
 
 const listAllSObjects = async () => {
   const metadata = await conn.describeGlobal();
-  return metadata.sobjects.filter(sObject => sObject.queryable).map(sObject => {
+  return metadata.sobjects.filter(sObject => sObject.queryable && sObject.createable && sObject.updateable && sObject.deletable).map(sObject => {
     return {
       name: sObject.name,
       label: sObject.label,
@@ -32,11 +32,7 @@ const describeSObject = async (objectName) => {
 }
 
 const soqlQuery = async (query) => {
-  try {
-    return await conn.query(query);
-  } catch (error) {
-    return error;
-  }
+  return await conn.query(query);
 }
 
 export {
