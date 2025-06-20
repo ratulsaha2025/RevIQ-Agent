@@ -34,7 +34,7 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "reviq-openai-agent"
+          project: "reviq-agent"
           entrypoint: "index.js"
           root: ""
           
