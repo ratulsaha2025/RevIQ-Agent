@@ -10,8 +10,13 @@ const socketServer = new WebSocketServer({ port: process.env.WEBSOCKET_PORT });
 socketServer.on('connection', (socket) => {
   let thread = [];
   socket.on('message', async (data) => {
-    const response = await run(queryAgent, thread.concat({ role: 'user', content: data.toString() }));
-    thread = response.history;
-    socket.send(response.finalOutput);
+    try {
+      const response = await run(queryAgent, thread.concat({ role: 'user', content: data.toString() }));
+      thread = response.history;
+      socket.send(response.finalOutput);
+    } catch (error) {
+      console.error('Error processing message:', error);
+      socket.send('Error processing message');
+    }
   });
 });
