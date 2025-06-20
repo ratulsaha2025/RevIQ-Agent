@@ -40,10 +40,11 @@ const soslQuery = async (query) => {
 }
 
 const updateRecord = async (objectName, recordId, updatedFields) => {
-  return await conn.sobject(objectName).update({
+  const res = await conn.sobject(objectName).update({
     Id: recordId,
     ...updatedFields
   });
+  return res;
 }
 
 export {

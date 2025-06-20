@@ -5,7 +5,7 @@ import { salesforceAgent } from './agent.js';
 
 dotenv.config();
 
-const socketServer = new WebSocketServer({ port: process.env.WEBSOCKET_PORT });
+const socketServer = new WebSocketServer({ port: process.env.WEBSOCKET_PORT || '9898' });
 
 socketServer.on('connection', (socket) => {
   let thread = [];

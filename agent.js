@@ -13,4 +13,4 @@ const salesforceAgent = Agent.create({
   handoffs: [salesforceQueryAgent, salesforceUpdateAgent],
 });
 
-export default salesforceAgent;
+export { salesforceAgent };
