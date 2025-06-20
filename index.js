@@ -17,7 +17,7 @@ socketServer.on('connection', (socket) => {
       socket.send(response.finalOutput);
     } catch (error) {
       console.error('Error processing message:', error);
-      socket.send('Error processing message');
+      socket.send('Error processing message\n\n' + JSON.stringify(error, null, 2));
     }
   });
 });
